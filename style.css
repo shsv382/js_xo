@@ -4,14 +4,24 @@
 }
 
 .cube {
-display: inline;
-width: 100px;
-height: 100px;
-background: #999;
-border: 1px solid green;
+	display: inline-block;
+	width: 100px;
+	height: 100px;
+	background: #999;
+	border: 2px solid black;
+	font-size: 77px;
+	line-height: 90px;
+	text-align: center;
+	cursor: pointer;
+}
 
 #container {
-height: 320px;
-width: 320px;
-border: 1px dotted red;
+	display: inline-block;
+	margin: auto;
+	position: relative;
+}
+
+.main {
+	width: 320px;
+	margin: auto;
 }

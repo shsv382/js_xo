@@ -2,34 +2,16 @@
 <head>
 <title>XO</title>
 <link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+
 </head>
 <body>
-
+	<div class="main">
+		<br>
 		<div id="container">
 		</div>
-
-<script>
-
-	var field = [" "," "," "," "," "," "," "," "," "];
-	var container = document.getElementById("container");
-
-	var render = function(field) {
-	  for (var i = 0; i < field.length; i++) {
-	    if (!(i % 3)) {
-		br = document.createElement('br');
-		container.appendChild(br);
-	    }
-		el = document.createElement('div');
-		el.innerHTML = i + " " + field[i].length;
-		el.className = "cube";
-		el.id = "cube" + i;
-		container.appendChild(el);
-	  }
-	}
-
-	render(field);
-
-</script>
+	</div>
+	<script type="text/javascript" src="script.js"></script>
 
 	
 </body>
