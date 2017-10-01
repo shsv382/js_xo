@@ -1,4 +1,4 @@
-$(document).ready(function() {
+
 	var field = [" "," "," "," "," "," "," "," "," "];
 	var container = document.getElementById("container");
 	var marker = "X";
@@ -10,6 +10,19 @@ $(document).ready(function() {
 			br = document.createElement('br');
 			container.appendChild(br);
 	    }
+		elementAdd(i);
+	  }
+	}
+
+	var gameover = function(field) {
+		if (field[0] == "X" && field[1] == "X" && field[2] == "X") return true;
+	}
+
+	var play = function() {
+		render(field);
+	};
+
+	var elementAdd = function(i) {
 		el = document.createElement('div');
 		el.innerHTML = field[i];
 		el.dataset.num = i;
@@ -21,23 +34,19 @@ $(document).ready(function() {
 			if (!(this.innerHTML == "X" || this.innerHTML == "O")) {
 				field[this.dataset.num] = marker;
 				marker = marker == "X" ? "O" : "X";
-				render(field);
+				if(gameover(field)) {
+					alert("Game over!");
+					render(field);
+					el.onclick = null;
+				}
+				else {
+					render(field);
+				}
 			}
 		}
 		container.appendChild(el);
-	  }
 	}
 
-/*	var gameover = function(field) {
-		if (field[0] == "X" && field[1] == "X" && field[2] == "X") alert("Gameover!");
-	}
-*/
-	var play = function() {
-		render(field);
-//		gameover(field);
-	};
-
-	document.onclick = play();
+	container.onclick = play();
 
 	
-});
