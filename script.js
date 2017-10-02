@@ -1,4 +1,4 @@
-
+$(document).ready(function() {
 	var field = [" "," "," "," "," "," "," "," "," "];
 	var container = document.getElementById("container");
 	var marker = "X";
@@ -69,3 +69,9 @@
 		marker = "X";
 		render(field);
 	}
+
+	// не работает jQuery, WTF???!!!
+	$(".cube").on("click", function(){
+		this.style.backgroundColor = "blue";
+	});
+});
