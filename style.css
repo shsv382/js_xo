@@ -25,3 +25,11 @@
 	width: 320px;
 	margin: auto;
 }
+
+#newgame {
+	position: absolute;
+	top: 5px;
+	display: block;
+	width: 300px;
+	margin: auto;
+}

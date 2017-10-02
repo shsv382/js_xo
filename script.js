@@ -15,7 +15,23 @@
 	}
 
 	var gameover = function(field) {
-		if (field[0] == "X" && field[1] == "X" && field[2] == "X") return true;
+		return ((field[0] == "X" && field[1] == "X" && field[2] == "X") ||
+				(field[3] == "X" && field[4] == "X" && field[5] == "X") ||
+				(field[6] == "X" && field[7] == "X" && field[8] == "X") ||
+				(field[0] == "X" && field[3] == "X" && field[6] == "X") ||
+				(field[1] == "X" && field[4] == "X" && field[7] == "X") ||
+				(field[2] == "X" && field[5] == "X" && field[8] == "X") ||
+				(field[0] == "X" && field[4] == "X" && field[8] == "X") ||
+				(field[2] == "X" && field[4] == "X" && field[6] == "X") ||
+				(field[0] == "O" && field[1] == "O" && field[2] == "O") ||
+				(field[3] == "O" && field[4] == "O" && field[5] == "O") ||
+				(field[6] == "O" && field[7] == "O" && field[8] == "O") ||
+				(field[0] == "O" && field[3] == "O" && field[6] == "O") ||
+				(field[1] == "O" && field[4] == "O" && field[7] == "O") ||
+				(field[2] == "O" && field[5] == "O" && field[8] == "O") ||
+				(field[0] == "O" && field[4] == "O" && field[8] == "O") ||
+				(field[2] == "O" && field[4] == "O" && field[6] == "O") ||
+				field.indexOf(" ") < 0);
 	}
 
 	var play = function() {
@@ -30,23 +46,26 @@
 		el.style.position = "absolute";
 		el.style.top  = Math.floor(i / 3) * 100 + "px";
 		el.style.left = Math.floor(i % 3) * 100 + "px";
-		el.onclick = function(e) {
+		if(!(gameover(field)))
+		el.addEventListener('click', function(e) {
 			if (!(this.innerHTML == "X" || this.innerHTML == "O")) {
 				field[this.dataset.num] = marker;
 				marker = marker == "X" ? "O" : "X";
 				if(gameover(field)) {
-					alert("Game over!");
 					render(field);
-					el.onclick = null;
+					alert("Game over!");
 				}
 				else {
 					render(field);
 				}
 			}
-		}
+		});
 		container.appendChild(el);
 	}
 
 	container.onclick = play();
-
-	
+	newgame.onclick = function() {
+		field = [" "," "," "," "," "," "," "," "," "];
+		marker = "X";
+		render(field);
+	}
