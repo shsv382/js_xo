@@ -40,15 +40,16 @@ $(document).ready(function() {
 
 	var elementAdd = function(i) {
 		el = document.createElement('div');
-		el.innerHTML = field[i];
+		el.innerHTML = "<span id='span" + i + "'>" + field[i] + "</span>";
 		el.dataset.num = i;
 		el.className = "cube";
+		el.id = "cube" + i;
 		el.style.position = "absolute";
 		el.style.top  = Math.floor(i / 3) * 100 + "px";
 		el.style.left = Math.floor(i % 3) * 100 + "px";
 		if(!(gameover(field)))
 		el.addEventListener('click', function(e) {
-			if (!(this.innerHTML == "X" || this.innerHTML == "O")) {
+			if (!(this.firstChild.innerHTML == "X" || this.firstChild.innerHTML == "O")) {
 				field[this.dataset.num] = marker;
 				marker = marker == "X" ? "O" : "X";
 				if(gameover(field)) {
@@ -61,6 +62,9 @@ $(document).ready(function() {
 			}
 		});
 		container.appendChild(el);
+		$('#cube' + i).on('click', function(){
+			$('#span' + i).effect('shake', {times: 2}, 500);
+		});
 	}
 
 	container.onclick = play();
@@ -69,9 +73,4 @@ $(document).ready(function() {
 		marker = "X";
 		render(field);
 	}
-
-	// не работает jQuery, WTF???!!!
-	$(".cube").on("click", function(){
-		this.style.backgroundColor = "blue";
-	});
 });

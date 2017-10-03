@@ -7,12 +7,24 @@
 	display: inline-block;
 	width: 100px;
 	height: 100px;
-	background: #999;
+	background-color: #9cf;
+	background: linear-gradient(to bottom right, #9cf, #5ac);
+	color: #a02;
+	text-shadow: 2px 2px 2px #55a;
 	border: 2px solid black;
 	font-size: 77px;
 	line-height: 90px;
 	text-align: center;
 	cursor: pointer;
+}
+
+.cube > span {
+	transform: rotate(0deg);
+}
+
+.cube > span:hover {
+	transform: rotate(90deg);	
+	transition: transform 800ms ease-in 400ms;
 }
 
 #container {
@@ -28,8 +40,14 @@
 
 #newgame {
 	position: absolute;
-	top: 5px;
+	top: 326px;
 	display: block;
 	width: 300px;
+	height: 80px;
 	margin: auto;
+	background-color: #9cf;
+	background: linear-gradient(to bottom right, #9cf, #5ac);
+	border: none;
+	height: 21px;
 }
+
